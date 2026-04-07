@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3829f384-1722-49cb-ba99-0207cbe99729" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/application-h2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/application-postgresql.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/db/changelog/changes/001-initial-schema.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/resources/db/changelog/db.changelog-master.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3829f384-1722-49cb-ba99-0207cbe99729" name="Changes" comment="initialisation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,12 +94,25 @@
       <updated>1773425761184</updated>
       <workItem from="1773425762365" duration="1925000" />
       <workItem from="1773946681633" duration="9751000" />
-      <workItem from="1774176539384" duration="8290000" />
+      <workItem from="1774176539384" duration="8577000" />
     </task>
+    <task id="LOCAL-00001" summary="initialisation">
+      <option name="closed" value="true" />
+      <created>1775574463726</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775574463726</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initialisation" />
+    <option name="LAST_COMMIT_MESSAGE" value="initialisation" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
