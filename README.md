@@ -18,6 +18,7 @@ The real backend is developed in a separate repository.
 
 ## Project Structure
 
+```markdown
 learning-management-system-frontend/
 │
 ├── frontend/
@@ -36,6 +37,7 @@ learning-management-system-frontend/
 │
 ├── .gitignore
 └── README.md
+```
 
 ## Requirements
 
