@@ -10,7 +10,11 @@ export class Health {
   constructor(private http: HttpClient) {}
 
   getHealth() {
-    return this.http.get('http://localhost:8000/');
+    // this was for dummy FastAPI backend
+    // return this.http.get('http://localhost:8000/');
+    
+    // call real Spring backend
+    return this.http.get('http://localhost:8080/api/health');
   }
 }
 
