@@ -1,20 +1,21 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Health } from './health';
+import { Health } from './health.service';
 import { JsonPipe } from "@angular/common";
 import { NgIf } from '@angular/common';
+import { Login } from './login/login';
 /*
 to fix this, import the "JsonPipe" class from "@angular/common" 
 and add it to the "imports" array of the component.*/
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgIf, JsonPipe],
+  imports: [RouterOutlet, NgIf, JsonPipe, Login],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('my-first-angular-app');
+  protected readonly title = signal('Learning Management System');
   
   health = signal<any>(null);
   

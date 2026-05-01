@@ -30,7 +30,7 @@ yarn-error.log
 .history/*
 
 # Miscellaneous (recursive)
-.angular/cache
+**/.angular/cache
 .sass-cache/
 connect.lock
 coverage
