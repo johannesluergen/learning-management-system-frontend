@@ -1,0 +1,65 @@
+
+:host {
+  --login-text: black;
+  --border: #000000;
+  --lightorange: #ffa000;
+}
+
+.parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 30%;
+  padding: 30px;
+  background-color: white;
+  border: 2px solid var(--border);
+  color: var(--login-text);
+  gap: 6px;
+}
+
+.login input,
+.login button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login button{
+    background: var(--sidebar-bg);
+    color: white;
+}
+
+h1{
+  margin: -30px -30px 3px -30px;
+  padding: 10px 30px;
+  border-bottom: 2px solid var(--border);
+  font-size: 22px;
+  background: lightblue;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.75;
+  margin-bottom: 3px;
+}
+
+.optionalErrorMessage{
+  white-space: pre-line;
+  font-size: 16px;
+  color: red;
+}
+
+.login-button{
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 4px;
+    cursor: pointer;
+}

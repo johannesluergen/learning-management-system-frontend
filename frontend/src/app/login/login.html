@@ -1,5 +1,25 @@
+<div class="parent">
 <section class="login">
 
-  <h1>This is the login component</h1>
-
+  <h1>LMS Login</h1>
+  <h2>If you are ready to learn, please log in<br>with your username and password</h2>
+  
+  <label>
+    Username:
+    <input type="text" placeholder="JohnDoe1234" [(ngModel)]="userName">
+  </label>
+  
+  <label>
+    Password:
+    <input type="password" [(ngModel)]="password">
+  </label>
+  
+  <button class="login-button"(click)="submitCredentials()">Submit Login Credentials</button>
+  
+  @if( badCredentialsFlag() ){
+    <p class="optionalErrorMessage">{{ errorMessage }}</p>
+  }
+  
+  
 </section>
+</div>
