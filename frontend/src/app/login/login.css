@@ -7,14 +7,13 @@
 
 .parent{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /*positions items alongside main flex direction; which is row by default
+  /*align-items: center;*/
 }
 
 .login{
   display: flex;
   flex-direction: column;
-  height: 50%;
   width: 30%;
   padding: 30px;
   background-color: white;
@@ -52,7 +51,7 @@ h2 {
 }
 
 .optionalErrorMessage{
-  white-space: pre-line;
+  white-space: pre-line; /* this makes it so \n in string are rendered*/
   font-size: 16px;
   color: red;
 }
@@ -61,5 +60,5 @@ h2 {
     font-size: 14px;
     margin-top: 5px;
     padding: 4px;
-    cursor: pointer;
+    cursor: pointer; /* hovering mouse over it will make it look clickable */
 }
