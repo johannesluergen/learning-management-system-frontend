@@ -1,11 +1,13 @@
 import { Component, signal, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { optionalLog } from '../config';
+import * as Validation from '../utils/validation';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -18,18 +20,8 @@ export class Login {
     
     private authService = inject(AuthenticationService);
     
-    isUserNameValid(){
-        return !!this.userName; // this will also catch empty strings
-    }
-    isEmailValid(){
-        return (!!this.email) && this.email.includes("@");
-    }
-    isPasswordValid(){
-        return !!this.password;
-    }
-    
     submitCredentials(){
-        if (!(this.isUserNameValid() && this.isPasswordValid())){
+        if (!(Validation.isUserNameValid(this.userName) && Validation.isPasswordValid(this.password))){
             this.badCredentialsFlag.set(true);
         }else{
             this.badCredentialsFlag.set(false);
@@ -66,4 +58,5 @@ export class Login {
             });
         }
     }
+
 }
