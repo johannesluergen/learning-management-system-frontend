@@ -13,7 +13,8 @@ import * as Validation from '../utils/validation';
 })
 export class Register {
     
-    // userName: string | null = null;  -> Less idiomatic and must always be explicitly initialized with null
+    // userName: string | null = null;  -> Less idiomatic and must always be explicitly initialized
+    // with null
     userName?: string;  //-> More idiomatic, same as userName: string | undefined, and undefined
                         //   can be checked like Null. Implicitly initialized to undefined
     email?: string;
