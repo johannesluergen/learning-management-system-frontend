@@ -13,20 +13,25 @@ export class AuthenticationService {
     
         const body = {username, password};
         
-        return this.http.post(API_BASE_URL+"/auth/login", body, {observe: "response"} );
+        return this.http.post(API_BASE_URL+"/auth/login", body, {
+            responseType: "text",
+            observe: "response",
+        });
     }
 
     sendRegisterRequest(
-        id: string, // sending big numbers as string like "6736352" is safer
         username: string,
         email: string,
         matrikelNumber: number,
         role: string,
         password: string,
     ){
-        const body = {id, username, email, matrikelNumber,role,password};
+        const body = {username, email, matrikelNumber,role,password};
 
-        return this.http.post(API_BASE_URL+"/auth/addNewUser", body, {observe: "response" });
+        return this.http.post(API_BASE_URL+"/auth/addNewUser", body, {
+            responseType: "text",
+            observe: "response",
+        });
         
     }
 }
