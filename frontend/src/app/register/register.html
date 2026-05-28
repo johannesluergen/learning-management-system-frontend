@@ -29,11 +29,26 @@
         <input type="password" [(ngModel)]="confirmPassword">
         </label>
         
-        <button class="enter-button"(click)="checkPasswords()">Confirm</button>
-        @if( doPasswordsMatch() ){
+        <button class="enter-button"(click)="checkPasswords()">Confirm Password</button>
+
+        @if( passwordCheckRequested() ){
+          @if(doPasswordsMatch() ){
             <p class="successMessage">Passwords match. User can be sent to backend!</p>
-        }@else{
-            <p class="errorMessage">Passwords currently dont match!</p>
+            <button class="enter-button"(click)="submitRegisterCredentials()">Register</button>
+            @if( registerRequestedFlag() ){
+              @if( isLoadingFlag() ){
+                <p class="waitingMessage">Waiting..</p>
+              }@else{
+                @if( registerSuccessFlag() ){
+                  <p class="successMessage">Successfully registered this user!</p>
+                }@else{
+                  <p class="errorMessage">Something went wrong. Couldnt register this user.</p>
+                }
+              }
+            }
+          }@else{
+              <p class="errorMessage">Passwords currently dont match!</p>
+          }
         }
   }
   
