@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_BASE_URL } from './config';
 import { Observable } from 'rxjs';
+import { optionalLog } from './config';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,7 @@ export class AuthenticationService {
         password: string,
     ){
         const body = {username, email, matrikelNumber,role,password};
-
+        optionalLog("Register request sent:",JSON.stringify(body));
         return this.http.post(API_BASE_URL+"/auth/addNewUser", body, {
             responseType: "text",
             observe: "response",
