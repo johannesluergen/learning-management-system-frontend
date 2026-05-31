@@ -2,7 +2,12 @@
 <section class="login">
 
   <h1>LMS Login</h1>
-  <h2>If you are ready to learn, please log in<br>with your username and password</h2>
+  @if( failedAuthFlag() ){
+    <p class="optionalErrorMessage">Stored authentication invalid. Your session has 
+    most<br>likely expired. Please log in again.</p>
+  }@else{
+    <h2>If you are ready to learn, please log in<br>with your username and password</h2>
+  }
   
   <label>
     Username:

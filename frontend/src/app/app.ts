@@ -10,7 +10,7 @@ and add it to the "imports" array of the component.*/
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgIf, JsonPipe, Login],
+  imports: [RouterOutlet, JsonPipe, Login],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
