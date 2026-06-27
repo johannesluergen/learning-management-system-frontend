@@ -3,6 +3,7 @@ import { HttpClient, HttpContext } from '@angular/common/http';
 import { API_BASE_URL } from './config';
 import { Observable } from 'rxjs';
 import { optionalLog } from './config';
+import { SKIP_AUTH_WRAPPING } from './http-context';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,12 @@ export class AuthenticationService {
         return this.http.post(API_BASE_URL+"/auth/login", body, {
             responseType: "text",
             observe: "response",
+            context: new HttpContext().set(SKIP_AUTH_WRAPPING, true)
         });
     }
 
+
+    // REFACTOR on final backend API!
     sendRegisterRequest(
         username: string,
         email: string,
@@ -32,6 +36,7 @@ export class AuthenticationService {
         return this.http.post(API_BASE_URL+"/auth/addNewUser", body, {
             responseType: "text",
             observe: "response",
+            context: new HttpContext().set(SKIP_AUTH_WRAPPING, true)
         });
         
     }

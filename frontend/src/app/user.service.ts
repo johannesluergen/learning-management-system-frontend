@@ -13,11 +13,11 @@ export class UserService {
   // It would get reset/cleared when user clears his browser
   // cache/cookies/site data
   private jwtToken: string | null;
-  private username: string | null;
+  private userEmail: string | null;
 
     constructor() {
       this.jwtToken = localStorage.getItem('jwt');
-      this.username = localStorage.getItem('username');
+      this.userEmail = localStorage.getItem('userEmail');
     }
 
     getToken(): string | null {
@@ -29,13 +29,13 @@ export class UserService {
       localStorage.setItem('jwt', token);
     }
 
-    getUsername(): string | null {
-      return this.username;
+    getUserEmail(): string | null {
+      return this.userEmail;
     }
 
-    setUsername(username: string): void {
-      this.username = username;
-      localStorage.setItem('username', username);
+    setUserEmail(userEmail: string): void {
+      this.userEmail = userEmail;
+      localStorage.setItem('userEmail', userEmail);
     }
 
     isLoggedIn(): boolean{
@@ -43,11 +43,11 @@ export class UserService {
     }
 
     logOut(): void {
-      // wipes out user information (currently username and JWT token)
+      // wipes out user information (currently userEmail and JWT token)
       localStorage.removeItem('jwt');
       this.jwtToken = null;
-      localStorage.removeItem('username');
-      this.username = null;
+      localStorage.removeItem('userEmail');
+      this.userEmail = null;
     }
 }
 

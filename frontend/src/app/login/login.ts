@@ -13,10 +13,9 @@ import * as Validation from '../utils/validation';
   styleUrl: './login.css',
 })
 export class Login {
-    userName: string | null = null;
-    email: string | null = null;
+    userEmail: string | null = null;
     password: string | null = null;
-    readonly errorMessage: string = "Bad Username/password combination;\nNo learning for you!";
+    readonly errorMessage: string = "Bad Usermail/password combination;\nNo learning for you!";
     badCredentialsFlag = signal<boolean>(false);
     
     private authService = inject(AuthenticationService);
@@ -49,35 +48,21 @@ export class Login {
     }
 
     submitCredentials(){
-        if (!(Validation.isUserNameValid(this.userName) && Validation.isPasswordValid(this.password))){
+        if (!(Validation.isEmailValid(this.userEmail) && Validation.isPasswordValid(this.password))){
             this.badCredentialsFlag.set(true);
         }else{
             this.badCredentialsFlag.set(false);
             
             // send to server
-            let loginResponse: number;
-            this.authService.sendLoginRequest(this.userName as string,this.password as string).subscribe({
+            this.authService.sendLoginRequest(this.userEmail as string,this.password as string).subscribe({
             
                 // successful 2xx responses are emitted as "next" data by Angular HTTP response wrappers
                 next: (response) => {
                 
                     optionalLog("Successful Login API call:",response.status,response.body);
-                    
-                    loginResponse = response.status;
-                    if (loginResponse !== 200){
-                        // something unexpected happened: loginResponse is a successfull http return code,
-                        // but not the plain 200 we expected
-                        
-                        this.badCredentialsFlag.set(true); // this is not ideal though since semantically
-                        // these may not be bad credentials. I maybe should implement a general error component
-                        // which gets displayed when something unexpected happens outside component-specific cases
-                        // (like bad credentials here)
-                    }
-                    // IMPLEMENT: DEAL WITH SUCCESSFUL login
-                    // this will need to be refactored later when backend combines login + generate token
-                    this.userService.setUsername(this.userName as string);
-                    // this is obviously not a real jwt token, but for now we need non-empty string to proceed
-                    this.userService.setToken("EXAMPLE_TOKEN_REFACTOR_LATER");
+                    this.userService.setUserEmail(this.userEmail as string);
+                    let token: string = response.body;
+                    this.userService.setToken(token);
                     this.reRouteToHomepageForUser();
                     
                 }, error: (err) => {

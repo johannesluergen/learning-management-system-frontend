@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrl: './homepage.css',
 })
 export class Homepage {
-  username: string | null;
+  userEmail: string | null;
   private router = inject(Router);
 
   constructor(private userService: UserService){
-    this.username = this.userService.getUsername();
+    this.userEmail = this.userService.getUserEmail();
   }
 
   logOut(): void {
