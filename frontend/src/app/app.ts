@@ -3,14 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { Health } from './health.service';
 import { JsonPipe } from "@angular/common";
 import { NgIf } from '@angular/common';
-import { Login } from './login/login';
 /*
 to fix this, import the "JsonPipe" class from "@angular/common" 
 and add it to the "imports" array of the component.*/
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, JsonPipe, Login],
+  imports: [RouterOutlet, JsonPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

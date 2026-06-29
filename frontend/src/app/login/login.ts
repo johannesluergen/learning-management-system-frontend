@@ -60,9 +60,8 @@ export class Login {
                 next: (response) => {
                 
                     optionalLog("Successful Login API call:",response.status,response.body);
-                    this.userService.setUserEmail(this.userEmail as string);
                     let token: string = response.body;
-                    this.userService.setToken(token);
+                    this.userService.logIn(this.userEmail as string, token);
                     this.reRouteToHomepageForUser();
                     
                 }, error: (err) => {

@@ -22,19 +22,14 @@ export class AuthenticationService {
         });
     }
 
-
-    // REFACTOR on final backend API!
-    sendRegisterRequest(
+    sendRegisterRequest( // default return type: Observable<any>
         username: string,
         email: string,
-        matrikelNumber: number,
-        role: string,
         password: string,
     ){
-        const body = {username, email, matrikelNumber,role,password};
+        const body = {username, email, password};
         optionalLog("Register request sent:",JSON.stringify(body));
         return this.http.post(API_BASE_URL+"/auth/addNewUser", body, {
-            responseType: "text",
             observe: "response",
             context: new HttpContext().set(SKIP_AUTH_WRAPPING, true)
         });

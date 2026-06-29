@@ -61,15 +61,6 @@ export class Register {
         this.passwordCheckRequested.set(true);
     }
 
-    /**
-     * generates a random matrikelNumber from 0 to 65535
-     */
-    private generateMatrikelNumber(): number{
-        let bytes = new Uint16Array(1);
-        crypto.getRandomValues(bytes);
-        return Number(bytes[0]);
-    }
-
     // this is a so-called JSDoc comment
     /**
      * note that this function is only called by HTML template if all credentials
@@ -78,37 +69,20 @@ export class Register {
     async submitRegisterCredentials(){
         this.isLoadingFlag.set(true);
         this.registerRequestedFlag.set(true);
-        /*
-            NOTE: Backend currently does not have the clearest API documentation of
-            what it wants from frontend. For example, should frontend generate
-            Matriculation-Number for a new User? and what exactly are the roles?
-            Will they be validated?
 
-            So given this uncertainty frontend currently does the following:
-            -It sends each new user with role "ROLE_USER" and hopes it is okay
-            -It generates a random matriculation number from a range that corresponds to
-             a uint16-type
-        */
+        // we need the following data to send to server:
+        // {username, email, password}
 
-        // we need the following data:
-        // {username, email, matrikelNumber,role,password};
-
-        // random matrikelNumber must be generated before the ID
-        let matrikelNumber: number = this.generateMatrikelNumber();
-
-        // send to server
         this.authService.sendRegisterRequest(
             this.userName as string,
             this.email as string,
-            matrikelNumber,
-            "ROLE_USER",
             this.password as string,
         ).subscribe({
-        
+
             // successful 2xx responses are emitted as "next" data by Angular HTTP response wrappers
             next: (response) => {
             
-                optionalLog("Successful Register API call:",response.status,response.body);
+                optionalLog("Successful Register API call:",response.status,JSON.stringify(response.body));
                 this.registerSuccessFlag.set(true);
                 this.isLoadingFlag.set(false);
                 

@@ -1,4 +1,8 @@
 <h1>LMS HOME</h1>
-<h2>Current User: {{ userEmail }}</h2>
+<h2>Current User: {{ userService.getUserEmail() }}</h2>
+<h2> Full Profile: {{ userService.getUserProfile()() }}</h2>
+@if( USER_PROFILE_UNDEFINED_FLAG() ){
+    <p class="errorMessage">{{ USER_PROFILE_UNATTAINABLE_MESSAGE }}</p>
+}
 
 <button (click)="logOut()">Enough learning for today, log me out</button>

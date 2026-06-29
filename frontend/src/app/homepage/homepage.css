@@ -1,0 +1,6 @@
+.errorMessage{
+  white-space: pre-line; /* this makes it so \n in string are rendered*/
+  font-size: 16px;
+  color: red;
+  margin: 2px;
+}
