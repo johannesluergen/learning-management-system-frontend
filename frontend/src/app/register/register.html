@@ -1,5 +1,5 @@
 <div class="parent">
-<section class="register">
+<section class="main-auth-box">
 
   <h1>Register for LMS</h1>
   <h2>If you are ready to learn, please enter an<br>username and email and set a password</h2>
@@ -22,7 +22,7 @@
   <button class="enter-button"(click)="checkInput()">Enter</button>
   
   @if( badInputFlag() ){
-    <p class="errorMessage">{{ errorMessage() }}</p>
+    <p class="error-message">{{ errorMessage() }}</p>
   }@else if( showConfirmPassword() ){
         <label>
         Enter Password Again:
@@ -33,21 +33,21 @@
 
         @if( passwordCheckRequested() ){
           @if(doPasswordsMatch() ){
-            <p class="successMessage">Passwords match. User can be sent to backend!</p>
+            <p class="success-message">Passwords match. User can be sent to backend!</p>
             <button class="enter-button"(click)="submitRegisterCredentials()">Register</button>
             @if( registerRequestedFlag() ){
               @if( isLoadingFlag() ){
                 <p class="waitingMessage">Waiting..</p>
               }@else{
                 @if( registerSuccessFlag() ){
-                  <p class="successMessage">Successfully registered this user!</p>
+                  <p class="success-message">Successfully registered this user!</p>
                 }@else{
-                  <p class="errorMessage">Something went wrong. Couldnt register this user.</p>
+                  <p class="error-message">Something went wrong. Couldnt register this user.</p>
                 }
               }
             }
           }@else{
-              <p class="errorMessage">Passwords currently dont match!</p>
+              <p class="error-message">Passwords currently dont match!</p>
           }
         }
   }

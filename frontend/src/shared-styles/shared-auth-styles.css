@@ -1,0 +1,126 @@
+/*
+This file stores CSS styling that we want to reuse across multiple authentication related
+components like login, register etc. Encapsulating these styles here improves maintainability
+and reusability.
+*/
+
+/* SOME NOTES ON PADDING VS MARGIN [Since this is a learning project, I document some of
+   my learnings through comments]
+   Padding controls space inside an element; so from its content to its border
+   Margin on the other hand controls how much space this element has to have from other elements
+   on the same level. SO padding is inward-looking, margin is outward-looking. Also, this means
+   for an inner element, we can actually visually reverse padding by giving equivalent negative
+   values to its margin like this:
+   .someClass{
+      padding: 2px;
+   } 
+   And then
+   .someClass someSubelement{
+      margin: -2px;
+    }
+*/
+
+/*host is a selector that refers to the hosting element itself. For example, if
+this is written in login.css, the host styles would be applied across the whole <app-login>
+HTML element
+*/
+:host {
+    /*
+    --some-var: someVal;
+    this syntax defines custom CSS variables we could later use like this:
+    color: var(--auth-text);
+    */
+  --auth-text: black;
+  --border: #000000;
+  --lightorange: #ffa000;
+}
+
+/* we give the outermost grouping element within our auth component the parent class */
+.parent{
+  /* 
+  Flexbox is CSS' 1-dimensional layout system: it arranges items along a single axis (row or column).
+  You then control alignment and spacing along the main axis and the cross axis.
+  */
+  display: flex;
+  justify-content: center; /*positions items alongside main flex direction; which is row by default
+  /*align-items: center;*/
+}
+
+/* in our current design this is the class of our second most outermost grouping element.
+   All the content of our auth component gets rendered in this box.
+*/
+.main-auth-box{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 30px;
+  background-color: white;
+  border: 2px solid var(--border);
+  color: var(--auth-text);
+  gap: 6px;
+}
+
+/* The following is called a descendant selector.
+   It targets all <input> elements anywhere inside elements with class "main-auth-box",
+   no matter how deeply nested.
+*/
+.main-auth-box input,
+.main-auth-box button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --sidebar-bg is inherited from app.css */
+.main-auth-box button{
+    background: var(--sidebar-bg);
+    color: white;
+}
+
+h1{
+  margin: -30px -30px 3px -30px;
+  padding: 10px 30px;
+  border-bottom: 2px solid var(--border);
+  font-size: 22px;
+  background: lightblue;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.75;
+  margin-bottom: 3px;
+}
+
+.error-message{
+  white-space: pre-line; /* this makes it so '\n' linebreaks in strings are rendered*/
+  font-size: 16px;
+  color: red;
+  margin: 2px;
+}
+
+.success-message{
+  white-space: pre-line;
+  font-size: 16px;
+  color: green;
+  margin: 2px;
+}
+
+nav li{
+    padding: 3px;
+    margin: 0;
+}
+
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.enter-button{
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 4px;
+    cursor: pointer; /* hovering mouse over it will make it look clickable */
+}
